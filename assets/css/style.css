@@ -1,7 +1,70 @@
+/*estilos de la barra lateral a la izq*/
 #sidebar-wrapper{
-	background-color: whitesmoke;
+	background-color: transparent;
 }
 
+#sidebar-wrapper a {
+	color: rgba(0,0,0,.87);
+}
+
+#sidebar-wrapper a:hover{
+	background-color: #dbdbdb;
+}
+
+/*navbar con fondo morado*/
 .violet-bg{
 	background-color: #b685c6;
+	padding-left: 15px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	padding: 10px;
+}
+/*boton hamburguesa de la navbar*/
+.btn-default{
+	background-color: transparent;
+	border: none;
+	border-radius: none;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+}
+
+.btn-default:hover{
+	background-color: purple; 
+}
+
+/*boton input*/
+
+.mui-textfield {
+    display: block;
+    padding-top: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.mui-textfield>input { 
+	background-image: url("../img/search-icon.png");
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	border-bottom: 1px solid rgba(0,0,0,.4);
+}
+
+.mui-textfield>input, .mui-textfield>textarea{
+	display: block;
+	background-color: transparent;
+	color: rgba(0,0,0,.87);
+	border: none;
+	height: 32px;
+	width: 100%;
+	font-size: 16px;
+	padding: 0;
+	box-shadow: none;
+	border-radius: 0;
+	outline: 0;
+}
+
+#pkm-search-bar{
+	border-bottom: 1px solid rgba(0,0,0,.4);
 }

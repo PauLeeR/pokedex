@@ -21,20 +21,33 @@ $(document).ready(function(){
 		return t;
 	}
 
-	var ajaxGif = function(gif){
+	*/
+	var ajaxPkm = function(gif){
 		$.ajax({
-			url: 'http://api.giphy.com/v1/gifs/search',
+			url: 'http://pokeapi.co/api/v2/pokemon/',
 			type: 'GET',
-			datatype: 'json',
-			data: {
-				q : gif,
-				api_key : 'dc6zaTOxFJmzC'
-			}
+			dataType: 'json',
+			data: {"limit": '811'},
 		})
-		.done(function(response){
+		.done(function() {
+			console.log("success");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+	}
+		
+			
+
+
+	/*		ajax q llama cuando hago click en c/u de los dibujarPokemones
+			ajax q busca las imagenes de los pokemones
+	/*	.done(function(response){
 			console.log(response);
 			dibujarGifs(response.data);
-		})
 		.fail(function(){
 			console.log("error");
 		});
