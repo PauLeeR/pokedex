@@ -5,9 +5,7 @@ $(document).ready(function(){
     });
 });
 
-
 /*
-
 	var dibujarPokemones = function(data){
 		var gif = "";
 		var url = "";
