@@ -1,14 +1,28 @@
+body{
+	background-color: #dbdbdb;
+}
+
 /*estilos de la barra lateral a la izq*/
 #sidebar-wrapper{
-	background-color: transparent;
+	background-color: white;
 }
 
 #sidebar-wrapper a {
 	color: rgba(0,0,0,.87);
+	padding: 10px;
 }
 
 #sidebar-wrapper a:hover{
 	background-color: #dbdbdb;
+}
+
+h4{  /*titulo y estilos de la barra lateral*/ 
+	border-bottom: 1px solid rgba(0,0,0,.4);
+	padding-top: 20px;
+	padding-bottom: 15px;
+	margin: 0;
+	width: 100%;
+	left: 0;
 }
 
 /*navbar con fondo morado*/
