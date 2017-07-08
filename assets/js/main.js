@@ -8,63 +8,42 @@
 			url: 'http://pokeapi.co/api/v2/pokemon/',
 			type: 'GET',
 			dataType: 'json',
-			data: {"limit": '10'}, 
+			data: {"limit": '12'}, 
 		})
-		.done(function(response) { //funciones que da el plugin de ajax
+		.done(function(response) { //funciones por defecto que da el plugin de ajax
 			//console.log("success");
-			showName(response); //defino la función, la declaro en la línea 24
+			response.results.forEach(function (element) {
+				//console.log(element.name); 
+				//console.log(element.url); 
+				$.getJSON(element.url, function(data){ //ahora hice una sola función que imprime el nombre y muestra la imagen (todo junto) en una funcion getJson, según ejemplo visto en la web (fuente: "http://api.jquery.com/jquery.ge/)
+					var pkmnSprite = data.sprites.front_default; //demora en cargar las imgs
+        		//console.log (pkmnSprite); 		
+        		$("#pokemon-list").append(armarTemplate(element.name, pkmnSprite));
+        		});   //anexa el nombre e imagen de los pokemones al div con ese id
+			})
+
 		})
 		.fail(function() {
 			//console.log("error");
 		})
 		.always(function() {
 			//console.log("complete");
-		});
+		})
 
-			function showName (response){ //creamos la función que imprimirá el nombre del PKMN en la pantalla
-				response.results.forEach(function(element){	
-					var nombrePkmn = element.name;
-					var urlPkmn = element.url;
-					//console.log(element.name); 
-					
-					//var printName = "<div class='elemento'><img src='" + nombrePkmn + "'/></div>";
-					var printName = $('<div>').text(nombrePkmn);
-					//console.log(element);
+	});
 
-					// Segundo ajax, para cada Pokémon
-					$.ajax({
-						url: urlPkmn,
-						type: 'GET',
-						dataType: 'JSON'
-					})
-					.done(function(response) {
-						//console.log("success");
-						//console.log(response);
-						pkmnPic(response); //defino la función, después la declaro
-						printName.append(nombrePkmn);
-						$('#pokemon-list').append(printName);
-					})
+	var armarTemplate = function(nombrePkmn,url){
+		var t = "<div class='element col-lg-3'><img src='" + url + "'/><h3>"+ nombrePkmn +"</h3></div>";
+		return t;
+	}
 
-					.fail(function() {
-						//console.log("error");
-					})
-					.always(function() {
-						//console.log("complete");
-					});
 
-					function pkmnPic(response){//función que agrega las imágenes de los pokemones/sprites
-						var pkmnId = response.id;
-						var sprite = $('<img>').attr({
-							'src':'http://pokeapi.co/media/img/'+ pkmnId +'.png',
-						});
-					};
-				});
-			};
-
-});
-/* falta funcion mostrar pokemones
-	ajax q llama cuando hago click en c/u de los dibujarPokemones
-			ajax q busca las imagenes de los pokemones
+				
+/* según Blanca hay que hacer 3 ajax, 1 primero 
+	- para el nombre de los pokemones
+	- el q llama cuando hago click en c/u de los pokemones (modal?)
+	- el q busca las imagenes de los pokemones
+	
 	EJEMPLO ANTERIOR DE GIPHY
 		/*data.forEach
 			/*gif = element.images.downsized_la	rge.url;
