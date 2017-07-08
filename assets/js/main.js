@@ -5,7 +5,7 @@
 	});
 	
 		$.ajax({ //1er ajax para que nos muestre el nombre de los pokemones en la pantalla
-			url: 'http://pokeapi.co/api/v2/pokemon/',
+			url: 'https://pokeapi.co/api/v2/pokemon/',
 			type: 'GET',
 			dataType: 'json',
 			data: {"limit": '12'}, 
